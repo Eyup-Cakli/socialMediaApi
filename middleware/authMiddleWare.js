@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
-const user = require("../models/userModel.js");
+const userModel = require("../models/userModel.js");
 
 const publicKey = fs.readFileSync('./certs/public.pem');
 
@@ -36,7 +36,7 @@ const checkUser = (req, res, next) => {
                 next();
             } else {
                 console.log(decodedToken);
-                let user = await user.findById(decodedToken.id);
+                let user = await userModel.findById(decodedToken.id);
                 res.locals.user = user;
                 next();
             }
