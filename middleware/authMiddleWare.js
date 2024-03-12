@@ -1,7 +1,6 @@
 const jwt = require("jsonwebtoken");
 const fs = require("fs");
 const userModel = require("../models/userModel.js");
-
 const publicKey = fs.readFileSync('./certs/public.pem');
 
 const requireAuth = (req, res, next) => {
